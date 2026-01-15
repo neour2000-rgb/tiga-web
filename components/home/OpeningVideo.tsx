@@ -40,7 +40,7 @@ export function OpeningVideo({ onComplete }: OpeningVideoProps) {
                 >
                     <video
                         ref={videoRef}
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-contain md:object-cover"
                         playsInline
                         muted
                         onEnded={handleComplete}
