@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Lock, FileText, Download, ExternalLink } from "lucide-react"
 import { supabase } from "@/lib/supabase"
+import { verifyPassword, checkSession } from "@/app/actions/auth"
 
 type Magazine = {
     id: string
@@ -19,6 +20,17 @@ export default function MagazinePage() {
     const [error, setError] = useState("")
     const [magazines, setMagazines] = useState<Magazine[]>([])
     const [isLoading, setIsLoading] = useState(true)
+
+    // セッションチェック (クッキーがあれば自動ログイン)
+    useEffect(() => {
+        const initSession = async () => {
+            const hasSession = await checkSession()
+            if (hasSession) {
+                setIsAuthenticated(true)
+            }
+        }
+        initSession()
+    }, [])
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -42,13 +54,16 @@ export default function MagazinePage() {
         }
     }
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
-        if (password === "tiga2026") {
+        setError("")
+
+        const result = await verifyPassword(password)
+
+        if (result.success) {
             setIsAuthenticated(true)
-            setError("")
         } else {
-            setError("パスワードが正しくありません")
+            setError(result.error || "エラーが発生しました")
         }
     }
 
