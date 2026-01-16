@@ -14,6 +14,10 @@ export default function Home() {
   const [mounted, setMounted] = useState(false)
   useEffect(() => {
     setMounted(true)
+    const hasSeen = sessionStorage.getItem("hasSeenOpeningVideo")
+    if (hasSeen) {
+      setShowContent(true)
+    }
   }, [])
 
   if (!mounted) return null
@@ -21,7 +25,12 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {!showContent && (
-        <OpeningVideo onComplete={() => setShowContent(true)} />
+        <OpeningVideo
+          onComplete={() => {
+            sessionStorage.setItem("hasSeenOpeningVideo", "true")
+            setShowContent(true)
+          }}
+        />
       )}
 
       {/* 
