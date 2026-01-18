@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { motion } from "framer-motion"
 import { Send, CheckCircle2 } from "lucide-react"
+import { sendContactEmail } from "@/app/actions/contact"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -33,12 +34,21 @@ export function ContactForm() {
         resolver: zodResolver(formSchema),
     })
 
+
     const onSubmit = async (data: FormData) => {
-        // 実際の実装ではここでAPIを叩く
-        console.log(data)
-        await new Promise((resolve) => setTimeout(resolve, 1500)) // ダミーの送信遅延
-        setIsSubmitted(true)
-        reset()
+        try {
+            const result = await sendContactEmail(data)
+
+            if (result.success) {
+                setIsSubmitted(true)
+                reset()
+            } else {
+                alert(result.message || "送信に失敗しました")
+            }
+        } catch (e: any) {
+            console.error(e)
+            alert(`エラーが発生しました: ${e.message || e.toString()}`)
+        }
     }
 
     if (isSubmitted) {
