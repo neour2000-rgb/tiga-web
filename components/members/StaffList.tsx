@@ -26,12 +26,12 @@ const staffMembers = [
     },
     {
         role: "コーチ",
-        name: "小野寺",
+        name: "小野寺 祥一",
         description: "聖光学院出身 甲子園出場経験有。キャッチャーとして甲子園に出場しており、その経験から主にバッテリーコーチとしてコーチングしています。"
     },
     {
         role: "コーチ",
-        name: "藤原",
+        name: "藤原 朋弘",
         description: "現在も現役選手として活躍中。現役投手としても活動しており、その経験を活かし主にピッチング、投球フォームをメインとしてコーチングしています。"
     },
     {
@@ -63,10 +63,7 @@ export function StaffList() {
                         >
                             <Card className="flex-1 hover:shadow-lg transition-shadow border-t-4 border-t-tiger-navy overflow-hidden">
                                 <CardContent className="p-6 text-center flex flex-col h-full">
-                                    <div className="w-24 h-24 bg-gray-100 rounded-full mx-auto mb-6 flex items-center justify-center text-gray-400 border-2 border-gray-200">
-                                        {/* Image Placeholder */}
-                                        <span className="text-xs">No Image</span>
-                                    </div>
+
                                     <p className="text-sm font-bold text-tiger-gold uppercase tracking-wider mb-2">{staff.role}</p>
                                     <h3 className="text-xl font-bold text-tiger-navy mb-4">{staff.name}</h3>
                                     <div className="text-sm text-gray-900 text-left leading-relaxed flex-grow">
