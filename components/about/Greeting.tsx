@@ -36,7 +36,7 @@ export function Greeting() {
                         <h2 className="text-3xl font-bold text-tiger-navy mb-2">チームからのメッセージ</h2>
                         <p className="text-lg text-tiger-gold mb-6 font-semibold">子供たちの未来のために、野球を通じて人間形成を。</p>
 
-                        <div className="space-y-4 text-gray-100 leading-relaxed">
+                        <div className="space-y-4 leading-relaxed">
                             <p>
                                 福島ティガファイターズのウェブサイトをご覧いただき、誠にありがとうございます。
                                 当チームは、野球の技術向上だけでなく、挨拶や礼儀、仲間を思いやる心の育成を大切に活動しています。
