@@ -86,7 +86,7 @@ export const scheduleData: ScheduleItem[] = [
         day: "日",
         time: "10:00-12:00 / 12:45-16:00",
         location: "平石小 体育館 / 平石小 校庭",
-        details: "※変更になりました",
+        details: "",
         title: "通常練習 (体育館・校庭)",
         isoDate: "2026-02-01"
     },
@@ -104,7 +104,7 @@ export const scheduleData: ScheduleItem[] = [
         day: "日",
         time: "12:45-16:00",
         location: "平石小 校庭",
-        details: "※変更になりました",
+        details: "",
         title: "通常練習",
         isoDate: "2026-02-08"
     },
@@ -149,7 +149,7 @@ export const scheduleData: ScheduleItem[] = [
         day: "日",
         time: "12:45-16:00",
         location: "平石小 校庭",
-        details: "※変更になりました あづま多目的広場も予約済みなので、練習場所が変更になる可能性があります",
+        details: "",
         title: "通常練習",
         isoDate: "2026-02-22"
     },
