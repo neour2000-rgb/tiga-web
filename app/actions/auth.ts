@@ -29,6 +29,17 @@ export async function checkSession() {
 export async function verifyAdminPassword(password: string) {
     const correctPassword = process.env.MAGAZINE_ADMIN_PASSWORD
 
+    console.log('--- Debug: Verify Admin Password ---')
+    // セキュリティのため、本番ログにはパスワードそのものは出さない方が安全ですが、デバッグ中は長さを確認
+    console.log('Input Length:', password?.length)
+    console.log('Correct (Env) Type:', typeof correctPassword)
+    console.log('Correct (Env) Length:', correctPassword?.length)
+
+    if (!correctPassword) {
+        console.error('Error: MAGAZINE_ADMIN_PASSWORD is not set in environment variables.')
+        return { success: false, error: 'システムエラー: 管理者パスワードがサーバーに設定されていません (MAGAZINE_ADMIN_PASSWORD)' }
+    }
+
     if (password === correctPassword) {
         // 管理者認証成功時、クッキーをセット
         const cookieStore = await cookies()
